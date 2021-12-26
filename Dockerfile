@@ -21,7 +21,7 @@ WORKDIR $APP_ROOT_DIR
 # install
 COPY package.json ./
 COPY yarn.lock ./
-RUN yarn
+RUN yarn --production
 
 # Bundle source
 COPY . .
