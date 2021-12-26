@@ -2,7 +2,7 @@
  * @Author: RGXMG
  * @Email: rgxmg@foxmail.com
  * @Date: 2021-12-18 15:10:50
- * @LastEditTime: 2021-12-25 21:10:36
+ * @LastEditTime: 2021-12-26 20:23:46
  * @LastEditors: RGXMG
  * @Description: 更新日志的控制器
  */
@@ -37,7 +37,7 @@ async function appendChangelog(ctx: Context) {
     ctx.query = ctx.request.query = body;
     getChangelog(ctx);
   } catch (e) {
-    ctx.failure("追加changelog失败！");
+    ctx.failure(e);
   }
 }
 
