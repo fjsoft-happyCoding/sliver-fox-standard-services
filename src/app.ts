@@ -2,7 +2,7 @@
  * @Author: RGXMG
  * @Email: rgxmg@foxmail.com
  * @Date: 2021-12-15 22:00:47
- * @LastEditTime: 2021-12-18 16:28:59
+ * @LastEditTime: 2021-12-26 21:15:41
  * @LastEditors: RGXMG
  * @Description: 项目主入口
  */
@@ -31,7 +31,7 @@ createRouter(app);
 
 // 监听错误
 app.on('error', (error, ctx) => {
-  console.log(error);
+  console.log('服务器响应失败：', error);
   ctx.failure('服务器响应失败', '500');
 });
 app.listen(3000, () => {

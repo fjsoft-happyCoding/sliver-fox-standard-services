@@ -2,7 +2,7 @@
  * @Author: RGXMG
  * @Email: rgxmg@foxmail.com
  * @Date: 2021-12-18 17:30:06
- * @LastEditTime: 2021-12-20 21:22:25
+ * @LastEditTime: 2021-12-26 21:16:11
  * @LastEditors: RGXMG
  * @Description:
  */
@@ -21,7 +21,6 @@ export * from "./schema";
 function validator(...schema: Schema[]) {
   return (ctx: Context, next: Next) => {
     let data = ctx.method === "GET" ? ctx.request.query : ctx.request.body;
-    console.log('data:::', data);
     if (typeof data !== "object") return next();
 
     const errorList: Array<Error> = [];

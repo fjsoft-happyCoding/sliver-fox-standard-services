@@ -2,7 +2,7 @@
  * @Author: RGXMG
  * @Email: rgxmg@foxmail.com
  * @Date: 2021-12-18 15:10:50
- * @LastEditTime: 2021-12-26 20:23:46
+ * @LastEditTime: 2021-12-26 21:15:52
  * @LastEditors: RGXMG
  * @Description: 更新日志的控制器
  */
@@ -12,8 +12,12 @@ import fs from "fs-extra";
 import path from "path";
 import dayjs from "dayjs";
 
+const mdFilesPath = path.join(__dirname, "./md");
+// ensure md 文件夹
+fs.ensureDirSync(mdFilesPath);
+
 function getFilePath(prefix: string) {
-  return path.join(__dirname, "./md", prefix + "_CHANGELOG.md");
+  return path.join(mdFilesPath, prefix + "_CHANGELOG.md");
 }
 
 /**
@@ -58,7 +62,6 @@ async function getChangelog(ctx: Context) {
     const {
       request: { query },
     } = ctx;
-    console.log(error);
     ctx.success({ scope: query.scope, content: null });
   }
 }

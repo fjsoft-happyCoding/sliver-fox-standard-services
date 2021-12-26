@@ -2,7 +2,7 @@
  * @Author: RGXMG
  * @Email: rgxmg@foxmail.com
  * @Date: 2021-12-16 21:37:05
- * @LastEditTime: 2021-12-18 16:49:31
+ * @LastEditTime: 2021-12-26 21:14:15
  * @LastEditors: RGXMG
  * @Description: 日志创建读取
  */
@@ -55,7 +55,9 @@ function createOutLogItemContent(ctx: ContextExtra) {
  function logError(ctx: Context, e: string) {
   const contentItem = `${splitSymbol}\r\n${dayjs().format("YYYY-MM-DD HH:mm:ss:SSS")}
   ${ctx.method} ${ctx.status} ${ctx.url} ${JSON.stringify(ctx.body)} ${e}\r\n`;
-  fs.writeFile(createFileName("error"), contentItem, {
+  const filepath = createFileName("error");
+  fs.ensureDirSync(filepath);
+  fs.writeFile(filepath, contentItem, {
     encoding: "utf8",
     flag: "a+",
   });
@@ -67,6 +69,8 @@ function createOutLogItemContent(ctx: ContextExtra) {
  */
 function loggerIn(ctx: ContextExtra) {
   const contentItem = createInLogItemContent(ctx);
+  const filepath = createFileName("access");
+  fs.ensureDirSync(filepath);
   fs.writeFile(createFileName("access"), contentItem, {
     encoding: "utf8",
     flag: "a+",
@@ -79,7 +83,9 @@ function loggerIn(ctx: ContextExtra) {
  */
 function loggerOut(ctx: ContextExtra) {
   const contentItem = createOutLogItemContent(ctx);
-  fs.writeFile(createFileName("access"), contentItem, {
+  const filepath = createFileName("access");
+  fs.ensureDirSync(filepath);
+  fs.writeFile(filepath, contentItem, {
     encoding: "utf8",
     flag: "a+",
   });
