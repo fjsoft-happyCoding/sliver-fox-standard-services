@@ -3,6 +3,8 @@ FROM node:16.13.1
 ENV YARN_VERSION 1.22.4
 ENV APP_ROOT_DIR /usr/src/feijiuapp/sliver-fox-standard-services
 
+RUN mkdir -p $APP_ROOT_DIR
+
 # install yarn
 RUN curl -fSLO --compressed "https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz" \
     && tar -xzf yarn-v$YARN_VERSION.tar.gz -C /opt/ \
@@ -10,10 +12,8 @@ RUN curl -fSLO --compressed "https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$
     && ln -snf /opt/yarn-v$YARN_VERSION/bin/yarnpkg /usr/local/bin/yarnpkg \
     && rm yarn-v$YARN_VERSION.tar.gz
 
-# change register
-RUN yarn global add yrm && yrm use taobao
 # install pm2
-RUN yarn global install pm2
+RUN yarn global add pm2
 
 # change cwd
 WORKDIR $APP_ROOT_DIR
