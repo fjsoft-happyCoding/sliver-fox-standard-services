@@ -2,11 +2,11 @@
  * @Author: RGXMG
  * @Email: rgxmg@foxmail.com
  * @Date: 2021-12-16 22:26:28
- * @LastEditTime: 2021-12-18 16:56:56
+ * @LastEditTime: 2021-12-26 16:39:10
  * @LastEditors: RGXMG
  * @Description:
  */
-import bodyParser from 'koa-bodyParser';
+import bodyParser from 'koa-bodyparser';
 import Koa from 'koa';
 import logger from '../../logs'
 import response from "./response.middleware";
