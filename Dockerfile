@@ -31,5 +31,5 @@ RUN yarn tsc
 
 EXPOSE 3000
 
-CMD ["pm2-runtime", "process.yml"]
+CMD ["pm2-runtime", "ecosystem.config.js"]
 
