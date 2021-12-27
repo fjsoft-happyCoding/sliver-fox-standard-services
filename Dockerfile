@@ -1,8 +1,12 @@
 # small size 
-FROM alpine:3.14 AS base
+FROM mhart/alpine-node:16.4.2
 
-# initial environment tools 
-RUN apk add --no-cache --update nodejs=16.13.1 yarn=1.22.4
+# RUN echo  http://mirrors.aliyun.com/alpine/v3.14/main/ > /etc/apk/repositories
+
+# RUN apk add --no-cache --update nodejs=14.18.1-r0
+
+# try to install yarn by npm global
+# RUN npm install --global yarn
 
 # set init environment 
 ENV NODE_ENV=production \ 
